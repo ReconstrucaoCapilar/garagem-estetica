@@ -1,0 +1,47 @@
+/* 1) Diferenciais: imagem de fundo um pouco mais visível, sem perder contraste */
+@media(max-width:860px){
+  .diff-bg img{
+    filter:brightness(.36) saturate(.76) contrast(1.04) !important;
+  }
+  .diff-bg::after{
+    background:
+      linear-gradient(90deg,rgba(8,8,10,.84),rgba(8,8,10,.48)),
+      linear-gradient(180deg,rgba(8,8,10,.20),rgba(8,8,10,.72)) !important;
+  }
+
+  /* 2) Logo do topo: aumento pequeno e controlado */
+  .site-nav .nav-logo,
+  .nav-logo{
+    width:150px !important;
+    max-width:44vw !important;
+  }
+  .site-nav .nav-logo img,
+  .nav-logo img{
+    width:100% !important;
+    height:auto !important;
+    max-height:32px !important;
+    object-fit:contain !important;
+  }
+}
+
+/* 3) Rodapé: remove qualquer destaque verde do contato WhatsApp */
+footer a[href*="wa.me"],
+footer a[href*="whatsapp"],
+.footer a[href*="wa.me"],
+.footer a[href*="whatsapp"]{
+  color:rgba(239,237,230,.72) !important;
+  background:transparent !important;
+  border-color:transparent !important;
+  box-shadow:none !important;
+  outline:none !important;
+  text-decoration:none !important;
+}
+
+footer a[href*="wa.me"]:hover,
+footer a[href*="whatsapp"]:hover,
+.footer a[href*="wa.me"]:hover,
+.footer a[href*="whatsapp"]:hover{
+  color:#F5F1E8 !important;
+  border-color:transparent !important;
+  box-shadow:none !important;
+}

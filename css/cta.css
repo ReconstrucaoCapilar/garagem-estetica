@@ -1,0 +1,25 @@
+/* CTA atendimento — vídeo mais visível, preservando leitura do texto */
+.cta-final .cta-bg-video{
+  filter:brightness(.72) contrast(1.06) saturate(.84) !important;
+}
+.cta-final::before{
+  background:
+    linear-gradient(180deg,
+      rgba(5,6,7,.27) 0%,
+      rgba(5,6,7,.38) 58%,
+      rgba(5,6,7,.68) 100%),
+    radial-gradient(circle at 50% 42%,rgba(185,149,75,.045),transparent 50%) !important;
+}
+
+@media(max-width:860px){
+  .cta-final .cta-bg-video{
+    filter:brightness(.78) contrast(1.06) saturate(.86) !important;
+  }
+  .cta-final::before{
+    background:
+      linear-gradient(180deg,
+        rgba(5,6,7,.24) 0%,
+        rgba(5,6,7,.35) 58%,
+        rgba(5,6,7,.70) 100%) !important;
+  }
+}

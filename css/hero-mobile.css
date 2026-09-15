@@ -1,0 +1,36 @@
+/* Remove somente a legenda repetida abaixo da logo principal do HERO */
+.hero-eyebrow{
+  display:none !important;
+}
+
+/* DESKTOP permanece com o enquadramento atual do vídeo. */
+
+/* MOBILE: reduz o zoom do vídeo para mostrar melhor a cena */
+@media (max-width:860px){
+  #layer-bg video{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    object-position:58% center !important;
+    transform:scale(.92) !important;
+    transform-origin:center center !important;
+  }
+
+  /* Compensa as pequenas bordas que podem surgir ao reduzir o vídeo,
+     mantendo o fundo integrado ao preto do site. */
+  #layer-bg{
+    background:#070809 !important;
+  }
+
+  /* Como a legenda saiu, aproxima o título da logo/conteúdo */
+  .hero-title{
+    margin-top:0 !important;
+  }
+}
+
+@media (max-width:430px){
+  #layer-bg video{
+    transform:scale(.88) !important;
+    object-position:58% center !important;
+  }
+}

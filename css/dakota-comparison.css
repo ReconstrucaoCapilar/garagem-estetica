@@ -1,0 +1,4 @@
+/* Segundo comparativo: reutiliza o visual existente sem adicionar bibliotecas. */
+#resultados .ba-wrap-secondary{margin-top:clamp(54px,7vw,88px);}
+#resultados .ba-wrap-secondary .ba-caption{margin-top:18px;}
+@media(max-width:760px){#resultados .ba-wrap-secondary{margin-top:46px;}}

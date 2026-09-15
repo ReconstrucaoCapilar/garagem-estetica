@@ -1,0 +1,45 @@
+/* Remove definitivamente a moldura verde do WhatsApp no rodapé */
+footer a[href="#"],
+footer a[href$="#"],
+footer .footer-contact a,
+footer .contact a,
+footer a[href*="99697"],
+.footer a[href="#"],
+.footer a[href$="#"],
+.footer a[href*="99697"]{
+  color:rgba(239,237,230,.78) !important;
+  background:none !important;
+  background-color:transparent !important;
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+  text-decoration:none !important;
+  -webkit-box-shadow:none !important;
+}
+
+footer a[href="#"]:hover,
+footer a[href="#"]:focus,
+footer a[href="#"]:focus-visible,
+footer a[href="#"]:active,
+footer a[href*="99697"]:hover,
+footer a[href*="99697"]:focus,
+.footer a[href="#"]:hover,
+.footer a[href="#"]:focus{
+  color:#F7F4EC !important;
+  background:none !important;
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+}
+
+/* neutraliza eventual moldura aplicada ao elemento pai */
+footer .footer-contact,
+footer .contact-item,
+footer .contact-row,
+footer p:has(a[href*="99697"]),
+.footer p:has(a[href*="99697"]){
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+  background:transparent !important;
+}
