@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Garagem Estética Automotiva | Cachoeiro de Itapemirim - ES</title>
+<meta content="Detalhamento automotivo, polimento, vitrificação e higienização em Cachoeiro de Itapemirim - ES. Cuidado que você vê nos detalhes." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --void:#08080a;
+    --panel:#111114;
+    --panel-2:#16161a;
+    --gold:#D4A72C;
+    --gold-soft:#A87918;
+    --gold-deep:#6E4B0A;
+    --gold-bright:#FFE08A;
+    --red:#a8241f;
+    --ink:#f2efe6;
+    --ink-dim:#a3a2a0;
+    --ink-faint:#6c6b6a;
+    --line:rgba(242,239,230,0.09);
+    --line-strong:rgba(242,239,230,0.16);
+    --ease-out: cubic-bezier(.16,.8,.24,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  /* film grain — signature texture, ties to the polished/reflective surfaces theme */
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    z-index:300;
+    pointer-events:none;
+    opacity:.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:180px 180px;
+  }
+
+  /* hex signature — the honeycomb light fixture from the garage is the brand's real visual mark */
+  .hex-tick{
+    width:14px; height:14px;
+    flex:0 0 auto;
+    display:inline-block;
+  }
+  .hex-divider{
+    display:flex; align-items:center; justify-content:center;
+    gap:14px;
+    padding:0;
+  }
+  .hex-divider .hd-line{flex:1; height:1px; background:var(--line-strong); max-width:220px;}
+  .hex-divider svg{width:16px; height:16px; flex:0 0 auto; opacity:.7;}
+
+  html{
+    background:var(--void);
+    scroll-behavior:smooth;
+  }
+
+  html.lenis-scrolling{scroll-behavior:auto;}
+
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  img{max-width:100%;display:block;}
+
+  a{color:inherit;text-decoration:none;}
+
+  .h-display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:.55em;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    color:var(--gold);
+  }
+  .eyebrow svg{width:13px; height:13px; flex:0 0 auto;}
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,64px);
+  }
+
+  ::selection{background:var(--gold);color:var(--void);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ============ NAV ============ */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0;
+    z-index:200;
+    padding:22px 0;
+    transition:padding .4s var(--ease-out), background .4s var(--ease-out), border-color .4s var(--ease-out);
+    border-bottom:1px solid transparent;
+  }
+  header.site-nav.scrolled{
+    padding:14px 0;
+    background:rgba(8,8,10,0.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-color:var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:24px;
+  }
+  .nav-logo{display:flex; align-items:center; gap:10px;}
+  .nav-logo img{height:26px; width:auto;}
+  .nav-links{
+    display:flex; align-items:center; gap:36px;
+    list-style:none;
+  }
+  .nav-links a{
+    font-size:.86rem; font-weight:500; color:var(--ink-dim);
+    position:relative;
+    padding:4px 0;
+    transition:color .25s;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute; left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--gold);
+    transition:width .3s var(--ease-out);
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a:hover::after{width:100%;}
+
+  .btn-gold{
+    display:inline-flex; align-items:center; justify-content:center;
+    gap:.5em;
+    background:var(--gold);
+    color:#1a1300;
+    font-weight:600;
+    font-size:.86rem;
+    padding:12px 24px;
+    border-radius:2px;
+    border:1px solid rgba(255,217,90,.9);
+    transition:transform .25s var(--ease-out), background .25s, box-shadow .25s;
+    white-space:nowrap;
+  }
+  .btn-gold:hover{
+    background:#f0c257;
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px -8px rgba(226,177,60,.55);
+  }
+  .btn-gold.large{
+    padding:18px 40px;
+    font-size:1rem;
+    letter-spacing:.01em;
+  }
+  .btn-outline{
+    display:inline-flex; align-items:center; gap:.5em;
+    padding:11px 22px;
+    border:1px solid var(--line-strong);
+    color:var(--ink);
+    font-size:.86rem; font-weight:500;
+    border-radius:2px;
+    transition:border-color .25s, background .25s;
+  }
+  .btn-outline:hover{border-color:var(--gold); background:rgba(226,177,60,.06);}
+
+  .menu-toggle{
+    display:none;
+    width:38px; height:38px;
+    align-items:center; justify-content:center;
+    background:transparent; border:1px solid var(--line-strong);
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .menu-toggle span{
+    display:block; width:16px; height:1px; background:var(--ink);
+    position:relative;
+  }
+  .menu-toggle span::before, .menu-toggle span::after{
+    content:''; position:absolute; left:0; width:16px; height:1px; background:var(--ink);
+    transition:transform .3s;
+  }
+  .menu-toggle span::before{top:-5px;}
+  .menu-toggle span::after{top:5px;}
+  .menu-toggle.open span{background:transparent;}
+  .menu-toggle.open span::before{transform:translateY(5px) rotate(45deg);}
+  .menu-toggle.open span::after{transform:translateY(-5px) rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed; inset:0; z-index:190;
+    background:rgba(8,8,10,0.98);
+    display:flex; flex-direction:column; align-items:flex-start;
+    justify-content:center;
+    gap:28px;
+    padding:0 32px;
+    transform:translateY(-100%);
+    transition:transform .45s var(--ease-out);
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{font-family:'Space Grotesk'; font-size:1.6rem; font-weight:700;}
+  .mobile-menu .btn-gold{margin-top:12px;}
+
+  /* ============ HERO / PARALLAX ============ */
+  .hero-pin{
+    position:relative;
+    height:170vh;
+    background:var(--void);
+  }
+  .hero-stage{
+    position:sticky;
+    top:0; left:0;
+    width:100%; height:100vh;
+    overflow:hidden;
+  }
+  .hero-layer{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    will-change:transform;
+  }
+  #layer-bg{
+    background:#050506;
+  }
+  #layer-bg video{
+    width:100%; height:100%; object-fit:cover;
+    object-position:60% 40%;
+    filter:brightness(.42) saturate(1.05);
+    transform:scale(1.18);
+  }
+  #layer-bg::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,8,10,.75) 0%, rgba(8,8,10,.15) 35%, rgba(8,8,10,.55) 78%, var(--void) 100%);
+  }
+  #layer-glow{
+    mix-blend-mode:screen;
+    opacity:.75;
+  }
+  #layer-glow .glow-a, #layer-glow .glow-b{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+  }
+  #layer-glow .glow-a{
+    width:46vw; height:46vw; max-width:640px; max-height:640px;
+    top:6%; right:2%;
+    background:radial-gradient(circle, rgba(226,177,60,.35), transparent 70%);
+  }
+  #layer-glow .glow-b{
+    width:38vw; height:38vw; max-width:520px; max-height:520px;
+    bottom:6%; left:4%;
+    background:radial-gradient(circle, rgba(168,36,31,.28), transparent 70%);
+  }
+  #layer-glow .hexrow{
+    position:absolute; top:0; left:0; width:100%; height:46%;
+    opacity:.5;
+  }
+  #layer-reflect{
+    mix-blend-mode:soft-light;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.06) 45%, transparent 60%);
+  }
+  #layer-content{
+    display:flex; flex-direction:column; justify-content:center;
+    height:100%;
+    padding:0 clamp(20px,6vw,90px);
+  }
+  .hero-brand-logo{
+    width:min(430px,42vw);
+    margin-bottom:22px;
+    opacity:0;
+    transform:translateY(22px) scale(.94);
+    animation:heroLogoIn 1.15s cubic-bezier(.16,1,.3,1) .15s forwards;
+  }
+  .hero-brand-logo img{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 28px rgba(0,0,0,.55));}
+  .hero-eyebrow{
+    color:var(--gold); font-weight:600; font-size:.82rem; letter-spacing:.16em;
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .hero-eyebrow span.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .hero-title{
+    font-size:clamp(2.6rem, 7vw, 5.6rem);
+    max-width:11.5em;
+    color:var(--ink);
+  }
+  .hero-title em{
+    font-style:normal;
+    color:var(--gold);
+  }
+  .hero-sub{
+    margin-top:26px;
+    max-width:460px;
+    color:var(--ink-dim);
+    font-size:1.02rem;
+    line-height:1.65;
+  }
+  .hero-cta-row{
+    margin-top:38px;
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  .hero-scroll-cue{
+    position:absolute; bottom:36px; left:clamp(20px,6vw,90px);
+    display:flex; align-items:center; gap:12px;
+    color:var(--ink-faint); font-size:.76rem; letter-spacing:.1em;
+  }
+  .hero-scroll-cue .line{
+    width:1px; height:34px; background:linear-gradient(var(--gold), transparent);
+    position:relative; overflow:hidden;
+  }
+
+  @media (max-width: 860px){
+    .hero-pin{height:135vh;}
+    #layer-content{justify-content:flex-end; padding-bottom:min(30vh, 220px);}
+    .hero-sub{max-width:100%;}
+  }
+
+  /* ============ SECTION SHELLS ============ */
+  section{position:relative;}
+  .section-pad{padding:clamp(65px,9vw,110px) 0;}
+  .section-dark{background:var(--void);}
+  .section-panel{background:var(--panel);}
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  }
+
+  .section-head{
+    max-width:640px;
+    margin-bottom:clamp(48px,7vw,84px);
+  }
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-title{
+    margin-top:18px;
+    font-size:clamp(1.9rem, 4vw, 3.1rem);
+    color:var(--ink);
+  }
+  .section-text{
+    margin-top:20px;
+    color:var(--ink-dim);
+    font-size:1.02rem;
+    max-width:52ch;
+  }
+  .section-head.center .section-text{margin-left:auto; margin-right:auto;}
+
+  /* ============ SERVICES ============ */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--panel);
+    padding:38px 30px 34px;
+    opacity:0;
+    transform:translateY(36px);
+    transition:background .35s;
+  }
+  .service-card:hover{background:var(--panel-2);}
+  .service-num{
+    position:relative;
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk';
+    font-weight:700;
+    font-size:.85rem;
+    color:var(--gold);
+    letter-spacing:.02em;
+  }
+  .service-num svg{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    stroke:var(--line-strong);
+    fill:none;
+    stroke-width:1.2;
+  }
+  .service-name{
+    font-family:'Space Grotesk';
+    font-weight:700;
+    font-size:1.18rem;
+    margin-top:26px;
+    color:var(--ink);
+    letter-spacing:.01em;
+    background:linear-gradient(100deg, var(--ink) 45%, var(--gold) 130%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    transition:background-position .4s ease;
+    background-size:220% 100%;
+    background-position:0% 0%;
+  }
+  .service-card:hover .service-name{background-position:100% 0%;}
+  .service-desc{
+    margin-top:14px;
+    color:var(--ink-dim);
+    font-size:.94rem;
+    line-height:1.6;
+  }
+  .service-card::before{
+    content:'';
+    display:block;
+    width:34px; height:1px;
+    background:var(--line-strong);
+    margin-top:24px;
+    margin-bottom: -10px;
+    transition:width .35s ease, background .35s ease;
+  }
+  .service-card:hover::before{width:60px; background:var(--gold);}
+
+  @media (max-width: 980px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width: 560px){
+    .services-grid{grid-template-columns:1fr;}
+  }
+
+  /* ============ RESULTADOS / BEFORE-AFTER ============ */
+  .ba-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    max-height:640px;
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+    cursor:ew-resize;
+    user-select:none;
+    background:#050506;
+  }
+  .ba-img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover;
+  }
+  .ba-before{z-index:1;}
+  .ba-after{z-index:2; clip-path:inset(0 50% 0 0);}
+  .ba-tag{
+    position:absolute; top:20px;
+    font-size:.72rem; font-weight:600; letter-spacing:.12em;
+    padding:7px 14px;
+    background:rgba(8,8,10,.65);
+    backdrop-filter:blur(6px);
+    z-index:3;
+    border:1px solid var(--line-strong);
+  }
+  .ba-tag.before-tag{left:20px;}
+  .ba-tag.after-tag{right:20px; color:var(--gold); border-color:rgba(226,177,60,.4);}
+  .ba-handle{
+    position:absolute; top:0; bottom:0;
+    left:50%;
+    width:2px;
+    background:var(--gold);
+    z-index:4;
+    transform:translateX(-1px);
+    box-shadow:0 0 24px rgba(226,177,60,.6);
+  }
+  .ba-grip{
+    position:absolute; top:50%; left:50%;
+    width:46px; height:46px;
+    transform:translate(-50%,-50%);
+    background:var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.45);
+  }
+  .ba-grip svg{width:20px; height:20px;}
+  .ba-caption{
+    margin-top:20px;
+    display:flex; justify-content:space-between; gap:20px;
+    color:var(--ink-faint); font-size:.82rem;
+    flex-wrap:wrap;
+  }
+
+  /* ============ GALLERY (horizontal on vertical scroll) ============ */
+  .gallery-pin{
+    height:340vh;
+    background:var(--void);
+  }
+  .gallery-stage{
+    position:sticky; top:0;
+    height:100vh;
+    display:flex; flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .gallery-head{padding:0 clamp(20px,6vw,90px); margin-bottom:44px;}
+  .gallery-track{
+    display:flex;
+    gap:26px;
+    padding:0 clamp(20px,6vw,90px);
+    will-change:transform;
+  }
+
+  @media (max-width: 860px){
+    .gallery-pin{height:auto; padding:70px 0;}
+    .gallery-stage{
+      position:static; height:auto;
+      display:block;
+    }
+    .gallery-head{margin-bottom:28px;}
+    .gallery-track{
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:8px;
+      transform:none !important;
+    }
+    .gallery-track::-webkit-scrollbar{display:none;}
+    .gallery-item{scroll-snap-align:start;}
+  }
+  .gallery-item{
+    position:relative;
+    flex:0 0 auto;
+    width:min(74vw, 420px);
+    height:min(52vw, 500px);
+    max-height:520px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--panel);
+  }
+  .gallery-item img{
+    width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.02) contrast(1.02);
+    transition:transform .6s var(--ease-out);
+    cursor:zoom-in;
+  }
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-item .g-tag{
+    position:absolute; left:0; bottom:0; right:0;
+    padding:18px 20px;
+    background:linear-gradient(0deg, rgba(6,6,7,.9), transparent);
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  .g-tag .g-model{font-family:'Space Grotesk'; font-weight:700; font-size:1.05rem;}
+  .g-tag .g-idx{color:var(--gold); font-size:.78rem; font-weight:600;}
+
+  /* ============ MOTO NOTE ============ */
+  .moto-note{
+    background:var(--void);
+    padding:34px 0 46px;
+    border-top:1px solid var(--line);
+  }
+  .moto-note-inner{
+    display:flex; align-items:center; gap:16px;
+    justify-content:center; text-align:center;
+    flex-wrap:wrap;
+  }
+  .moto-note svg{
+    width:26px; height:26px; flex-shrink:0;
+    color:var(--gold);
+  }
+  .moto-note p{
+    color:var(--ink-faint);
+    font-size:.98rem;
+    max-width:640px;
+    margin:0;
+  }
+  .moto-note strong{
+    color:var(--ink);
+    font-family:'Space Grotesk'; font-weight:700;
+  }
+
+  /* ============ LIGHTBOX ============ */
+  .lightbox{
+    position:fixed; inset:0; z-index:999;
+    background:rgba(4,4,5,.96);
+    display:flex; align-items:center; justify-content:center;
+    padding:40px;
+    opacity:0; visibility:hidden;
+    transition:opacity .3s var(--ease-out);
+  }
+  .lightbox.is-open{ opacity:1; visibility:visible; }
+  .lightbox img{
+    max-width:100%; max-height:100%;
+    object-fit:contain;
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+  }
+  .lightbox-close{
+    position:absolute; top:22px; right:22px;
+    width:46px; height:46px;
+    display:flex; align-items:center; justify-content:center;
+    background:transparent; border:1px solid var(--line);
+    border-radius:50%;
+    color:var(--ink);
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+  }
+  .lightbox-close:hover{ background:var(--gold); border-color:var(--gold); color:#0a0a0b; }
+  .lightbox-close svg{ width:20px; height:20px; }
+  @media (max-width:600px){
+    .lightbox{ padding:16px; }
+    .lightbox-close{ top:12px; right:12px; width:40px; height:40px; }
+  }
+
+  /* ============ DIFERENCIAL ============ */
+  .diff-section{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    background:#0a0a0c;
+  }
+  .diff-bg{
+    position:absolute; inset:0;
+    z-index:0;
+  }
+  .diff-bg img{
+    width:100%; height:100%; object-fit:cover;
+    filter:brightness(.32) saturate(.9);
+  }
+  .diff-bg::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(8,8,10,.96) 10%, rgba(8,8,10,.55) 55%, rgba(8,8,10,.85) 100%);
+  }
+  .diff-inner{position:relative; z-index:1; width:100%;}
+  .diff-title{
+    font-size:clamp(2rem, 4.2vw, 3.4rem);
+    max-width:11em;
+    margin-top:18px;
+  }
+  .diff-list{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  .diff-item{
+    opacity:0; transform:translateY(24px);
+    padding-top:20px;
+    border-top:1px solid var(--line-strong);
+  }
+  .diff-item h4{
+    font-family:'Space Grotesk'; font-weight:700; font-size:1.02rem;
+    color:var(--gold);
+  }
+  .diff-item p{
+    margin-top:10px; color:var(--ink-dim); font-size:.92rem;
+  }
+  @media (max-width:900px){
+    .diff-list{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .diff-list{grid-template-columns:1fr;}
+  }
+
+  /* ============ CTA FINAL ============ */
+  .cta-final{
+    position:relative;
+    min-height:74vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    overflow:hidden;
+  }
+  .cta-bg{position:absolute; inset:0; z-index:0;}
+  .cta-bg img{
+    width:100%; height:120%; object-fit:cover;
+    filter:brightness(.3);
+  }
+  .cta-bg::after{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at center, rgba(8,8,10,.4), rgba(8,8,10,.92) 75%);
+  }
+  .cta-inner{position:relative; z-index:1; max-width:720px; padding:0 24px;}
+  .cta-eyebrow{color:var(--gold); font-weight:600; letter-spacing:.14em; font-size:.82rem;}
+  .cta-title{
+    margin-top:20px;
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+  }
+  .cta-final .btn-gold{margin-top:40px;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:#050506;
+    padding:70px 0 30px;
+    border-top:1px solid var(--line);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:48px;
+  }
+  .footer-logo img{height:26px;}
+  .footer-tagline{margin-top:18px; color:var(--ink-faint); font-size:.88rem; max-width:32ch;}
+  .footer-col h5{
+    font-family:'Space Grotesk'; font-weight:700; font-size:.86rem;
+    letter-spacing:.06em; color:var(--ink-dim); margin-bottom:18px;
+  }
+  .footer-col p, .footer-col a{
+    display:block; color:var(--ink-dim); font-size:.92rem; margin-bottom:10px;
+  }
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{
+    margin-top:60px; padding-top:24px;
+    border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    color:var(--ink-faint); font-size:.78rem;
+  }
+  @media (max-width:760px){
+    .footer-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ============ WHATSAPP APPOINTMENT MODAL ============ */
+  .wa-modal{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.78);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;}
+  .wa-modal.is-open{opacity:1;visibility:visible;}
+  .wa-modal-card{position:relative;width:min(520px,100%);background:linear-gradient(145deg,#111113,#080809);border:1px solid rgba(242,181,29,.32);box-shadow:0 35px 100px rgba(0,0,0,.65);padding:34px;border-radius:4px;transform:translateY(20px) scale(.97);transition:transform .35s cubic-bezier(.16,1,.3,1);}
+  .wa-modal.is-open .wa-modal-card{transform:none;}
+  .wa-modal-kicker{color:var(--gold);font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px;}
+  .wa-modal-title{font-family:'Space Grotesk';font-size:clamp(1.7rem,5vw,2.35rem);line-height:1.02;color:var(--ink);margin:0 35px 8px 0;}
+  .wa-modal-sub{color:var(--ink-dim);font-size:.9rem;line-height:1.6;margin:0 0 24px;}
+  .wa-modal-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border:1px solid var(--line);background:#ffffff08;color:var(--ink-dim);display:grid;place-items:center;cursor:pointer;border-radius:50%;transition:.25s;}
+  .wa-modal-close:hover{background:var(--gold);border-color:var(--gold);color:#08080a;transform:rotate(90deg);}
+  .wa-modal-close svg{width:17px;height:17px;}
+  .wa-field{margin-bottom:20px;}
+  .wa-label{display:block;color:var(--ink-dim);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:9px;}
+  .wa-input{width:100%;height:48px;border:1px solid var(--line);background:#050506;color:var(--ink);outline:none;padding:0 14px;font:inherit;border-radius:2px;transition:border-color .25s,box-shadow .25s;}
+  .wa-input:focus{border-color:rgba(242,181,29,.7);box-shadow:0 0 0 3px rgba(242,181,29,.08);}
+  .vehicle-options{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
+  .vehicle-option{position:relative;}
+  .vehicle-option input{position:absolute;opacity:0;pointer-events:none;}
+  .vehicle-option label{min-height:72px;border:1px solid var(--line);background:#050506;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px 8px;color:var(--ink-dim);font-size:.8rem;font-weight:700;cursor:pointer;transition:.25s;}
+  .vehicle-option label:hover{border-color:#ffffff38;transform:translateY(-1px);}
+  .vehicle-option input:checked+label{border-color:var(--gold);background:rgba(242,181,29,.08);color:var(--gold);box-shadow:inset 0 0 0 1px rgba(242,181,29,.18);}
+  .other-wrap{display:none;margin-top:12px;}
+  .other-wrap.is-visible{display:block;animation:waFade .25s ease both;}
+  .wa-submit{width:100%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:5px;}
+  .wa-error{min-height:18px;color:#e7a8a8;font-size:.75rem;margin-top:8px;}
+  @keyframes waFade{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+  @media(max-width:520px){.wa-modal-card{padding:25px 20px}.vehicle-options{grid-template-columns:1fr 1fr}.vehicle-option:last-child{grid-column:1/-1}.vehicle-option label{min-height:60px}}
+
+  /* ============ WHATSAPP FLOAT ============ */
+  .wa-float{
+    position:fixed; right:22px; bottom:22px;
+    width:58px; height:58px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    z-index:150;
+    box-shadow:0 10px 30px -6px rgba(0,0,0,.55);
+    transition:transform .25s var(--ease-out);
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:28px; height:28px;}
+
+  .reveal{opacity:0; transform:translateY(30px);}
+  @keyframes heroLogoIn{from{opacity:0;transform:translateY(22px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @media (max-width:860px){.hero-brand-logo{width:min(330px,72vw);}}
+
+  .gold-key{
+    display:inline-block;
+    color:#171106 !important;
+    background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 55%,#D7A31C 100%);
+    padding:.035em .16em .08em;
+    border-radius:3px;
+    box-shadow:0 8px 26px -12px rgba(244,197,66,.55);
+    -webkit-text-fill-color:#171106 !important;
+    white-space:nowrap;
+  }
+  .hero-eyebrow{
+    color:#171106;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    padding:7px 11px;
+    width:max-content;
+    border-radius:2px;
+    font-weight:800;
+  }
+  .hero-eyebrow span.dot{background:#171106;}
+  .service-name{
+    display:inline-block;
+    color:#171106 !important;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    padding:.14em .28em .2em;
+    border-radius:3px;
+    -webkit-text-fill-color:#171106 !important;
+    background-size:100% 100%;
+  }
+  .service-card:hover .service-name{background-position:0 0;}
+  .diff-item h4{
+    display:inline-block;
+    color:#171106 !important;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    padding:5px 9px;
+    border-radius:2px;
+  }
+  .cta-eyebrow{
+    display:inline-block;
+    color:#171106 !important;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    padding:7px 11px;
+    border-radius:2px;
+    font-weight:800;
+  }
+  .ba-tag.after-tag{
+    color:#171106;
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold));
+    border-color:transparent;
+  }
+  .g-tag .g-idx{color:var(--gold-bright);}
+
+
+  /* ===== OURO PREMIUM — ajustes exclusivos de cor/destaques ===== */
+  .btn-gold{
+    color:#171106;
+    background:linear-gradient(
+      115deg,
+      #8B6212 0%,
+      #C38F1E 16%,
+      #F2C85B 34%,
+      #FFE39A 47%,
+      #D5A52B 62%,
+      #F0C65A 79%,
+      #9A6C12 100%
+    );
+    background-size:180% 100%;
+    border-color:rgba(255,224,142,.72);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.32),
+      inset 0 -1px 0 rgba(91,58,4,.28),
+      0 8px 24px -12px rgba(212,167,44,.48);
+  }
+
+  .btn-gold:hover{
+    background-position:100% 0;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.38),
+      inset 0 -1px 0 rgba(91,58,4,.24),
+      0 12px 32px -10px rgba(212,167,44,.58);
+  }
+
+  /* Todos os blocos/destaques dourados do site usam o mesmo acabamento metálico. */
+  .gold-key,
+  .hero-eyebrow,
+  .service-name,
+  .diff-item h4,
+  .cta-eyebrow,
+  .ba-tag.after-tag{
+    color:#171106 !important;
+    background:linear-gradient(
+      115deg,
+      #8B6212 0%,
+      #C38F1E 15%,
+      #F2C85B 33%,
+      #FFE39A 47%,
+      #D5A52B 62%,
+      #F0C65A 80%,
+      #9A6C12 100%
+    );
+    background-size:180% 100%;
+    border-color:rgba(255,224,142,.68);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.28),
+      inset 0 -1px 0 rgba(91,58,4,.22),
+      0 7px 22px -13px rgba(212,167,44,.48);
+    -webkit-text-fill-color:#171106 !important;
+  }
+
+  .gold-key{
+    padding:.025em .13em .065em;
+    border-radius:3px;
+  }
+
+  .hero-eyebrow,
+  .cta-eyebrow{
+    padding:7px 11px;
+    border-radius:2px;
+  }
+
+  .service-name{
+    padding:.12em .24em .17em;
+    border-radius:3px;
+  }
+
+  .diff-item h4{
+    padding:5px 9px;
+    border-radius:2px;
+  }
+
+  .ba-tag.after-tag{
+    border-color:rgba(255,224,142,.68);
+  }
+
+  .gold-key:hover,
+  .hero-eyebrow:hover,
+  .service-name:hover,
+  .diff-item h4:hover,
+  .cta-eyebrow:hover,
+  .ba-tag.after-tag:hover{
+    background-position:100% 0;
+  }
+
+  /* Pequenos elementos dourados também seguem a nova paleta. */
+  .eyebrow,
+  .hero-title em,
+  .service-num,
+  .diff-item h4,
+  .cta-eyebrow,
+  .g-tag .g-idx{
+    text-shadow:0 0 18px rgba(212,167,44,.16);
+  }
+
+
+  /* ===== WHATSAPP — botão de ação separado do dourado ===== */
+  #navCta,
+  #mobileCta,
+  .wa-link,
+  .wa-submit{
+    background:linear-gradient(135deg,#101315 0%,#171C1A 52%,#101513 100%) !important;
+    color:#F4F1E8 !important;
+    border:1px solid rgba(37,211,102,.62) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.08),
+      inset 0 -1px 0 rgba(0,0,0,.45),
+      0 0 0 1px rgba(37,211,102,.06),
+      0 8px 24px -10px rgba(37,211,102,.35) !important;
+    animation:whatsappPulse 2.4s ease-in-out infinite;
+    will-change:transform,box-shadow;
+  }
+
+  #navCta:hover,
+  #mobileCta:hover,
+  .wa-link:hover,
+  .wa-submit:hover{
+    background:linear-gradient(135deg,#142019 0%,#1B2820 52%,#122018 100%) !important;
+    color:#FFFFFF !important;
+    border-color:rgba(37,211,102,.95) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.10),
+      0 0 22px rgba(37,211,102,.22),
+      0 12px 34px -10px rgba(37,211,102,.45) !important;
+    animation-duration:1.5s;
+  }
+
+  @keyframes whatsappPulse{
+    0%,100%{
+      transform:translateY(0) scale(1);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        inset 0 -1px 0 rgba(0,0,0,.45),
+        0 0 0 1px rgba(37,211,102,.06),
+        0 8px 24px -10px rgba(37,211,102,.35);
+    }
+    50%{
+      transform:translateY(-2px) scale(1.018);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        inset 0 -1px 0 rgba(0,0,0,.45),
+        0 0 0 4px rgba(37,211,102,.07),
+        0 12px 32px -8px rgba(37,211,102,.55);
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    #navCta,
+    #mobileCta,
+    .wa-link,
+    .wa-submit{
+      animation:none !important;
+    }
+  }
+
+
+  /* ===== WHATSAPP — VERMELHO FERRARI ===== */
+  #navCta,
+  #mobileCta,
+  .hero-cta-row .wa-link,
+  .cta-final .wa-link,
+  .wa-submit{
+    background:linear-gradient(135deg,#3A0808 0%,#760D0D 28%,#C91515 58%,#8E0E0E 82%,#420707 100%) !important;
+    color:#FFF7F2 !important;
+    border:1px solid rgba(255,82,82,.72) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,190,170,.18),
+      inset 0 -1px 0 rgba(35,0,0,.55),
+      0 0 0 1px rgba(190,20,20,.10),
+      0 8px 26px -10px rgba(190,20,20,.48) !important;
+    background-size:180% 100%;
+    animation:whatsappFerrariPulse 2.35s ease-in-out infinite;
+    will-change:transform,box-shadow;
+  }
+
+  #navCta:hover,
+  #mobileCta:hover,
+  .hero-cta-row .wa-link:hover,
+  .cta-final .wa-link:hover,
+  .wa-submit:hover{
+    background-position:100% 0;
+    background:linear-gradient(135deg,#4A0909 0%,#8F1010 28%,#E01B1B 58%,#A91111 82%,#500808 100%) !important;
+    color:#FFFFFF !important;
+    border-color:rgba(255,105,105,.95) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,210,195,.22),
+      0 0 24px rgba(210,24,24,.28),
+      0 13px 36px -10px rgba(190,20,20,.58) !important;
+  }
+
+  @keyframes whatsappFerrariPulse{
+    0%,100%{
+      transform:translateY(0) scale(1);
+      box-shadow:
+        inset 0 1px 0 rgba(255,190,170,.18),
+        inset 0 -1px 0 rgba(35,0,0,.55),
+        0 0 0 1px rgba(190,20,20,.10),
+        0 8px 26px -10px rgba(190,20,20,.48);
+    }
+    50%{
+      transform:translateY(-2px) scale(1.018);
+      box-shadow:
+        inset 0 1px 0 rgba(255,210,195,.22),
+        inset 0 -1px 0 rgba(35,0,0,.5),
+        0 0 0 4px rgba(220,30,30,.08),
+        0 13px 34px -8px rgba(210,24,24,.62);
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    #navCta,
+    #mobileCta,
+    .hero-cta-row .wa-link,
+    .cta-final .wa-link,
+    .wa-submit{
+      animation:none !important;
+    }
+  }
+
+
+  /* ===== SERVIÇOS — acabamento premium ===== */
+  #servicos .section-head{
+    position:relative;
+    max-width:760px;
+    margin-bottom:clamp(42px,5vw,62px);
+  }
+
+  #servicos .section-head::after{
+    content:"";
+    display:block;
+    width:92px;
+    height:1px;
+    margin-top:28px;
+    background:linear-gradient(90deg,rgba(212,167,44,.9),rgba(212,167,44,.08));
+    box-shadow:0 0 16px rgba(212,167,44,.16);
+  }
+
+  #servicos .services-grid{
+    gap:1px;
+    padding:1px;
+    border:1px solid rgba(212,167,44,.14);
+    background:linear-gradient(
+      135deg,
+      rgba(212,167,44,.30),
+      rgba(255,255,255,.055) 28%,
+      rgba(255,255,255,.035) 72%,
+      rgba(212,167,44,.18)
+    );
+    box-shadow:
+      0 28px 70px rgba(0,0,0,.30),
+      inset 0 1px 0 rgba(255,255,255,.035);
+    overflow:visible;
+  }
+
+  #servicos .service-card{
+    position:relative;
+    min-height:275px;
+    padding:34px 30px 32px;
+    background:
+      radial-gradient(circle at 90% 8%,rgba(212,167,44,.055),transparent 34%),
+      linear-gradient(145deg,#111214 0%,#0D0E10 100%);
+    overflow:hidden;
+    transition:
+      transform .4s cubic-bezier(.2,.8,.2,1),
+      background .4s ease,
+      box-shadow .4s ease;
+  }
+
+  #servicos .service-card::after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:2px;
+    background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(212,167,44,.8),
+      rgba(255,224,142,.95),
+      transparent
+    );
+    transform:scaleX(.18);
+    transform-origin:left;
+    opacity:.35;
+    transition:transform .45s ease,opacity .45s ease;
+  }
+
+  #servicos .service-card:hover{
+    z-index:2;
+    transform:translateY(-7px);
+    background:
+      radial-gradient(circle at 90% 8%,rgba(212,167,44,.10),transparent 38%),
+      linear-gradient(145deg,#171719 0%,#101113 100%);
+    box-shadow:
+      0 20px 38px rgba(0,0,0,.38),
+      0 0 28px rgba(212,167,44,.06);
+  }
+
+  #servicos .service-card:hover::after{
+    transform:scaleX(1);
+    opacity:1;
+  }
+
+  #servicos .service-num{
+    width:48px;
+    height:48px;
+    color:#E4B83E;
+    font-size:.76rem;
+    letter-spacing:.08em;
+  }
+
+  #servicos .service-num svg{
+    stroke:rgba(212,167,44,.32);
+    transition:stroke .35s ease,transform .45s ease;
+  }
+
+  #servicos .service-card:hover .service-num svg{
+    stroke:rgba(242,200,91,.85);
+    transform:rotate(30deg);
+  }
+
+  /* Retira os retângulos dos nomes e transforma em tipografia premium. */
+  #servicos .service-name{
+    display:block;
+    position:relative;
+    width:fit-content;
+    max-width:100%;
+    margin-top:25px;
+    padding:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    background:none !important;
+    box-shadow:none !important;
+    color:#F1EEE7 !important;
+    -webkit-text-fill-color:#F1EEE7 !important;
+    font-size:1.12rem;
+    line-height:1.25;
+    letter-spacing:.015em;
+    transition:color .35s ease,transform .35s ease;
+  }
+
+  #servicos .service-name::before{
+    content:"";
+    display:block;
+    width:28px;
+    height:2px;
+    margin-bottom:12px;
+    background:linear-gradient(90deg,#D4A72C,#FFE08A);
+    box-shadow:0 0 12px rgba(212,167,44,.20);
+    transition:width .4s ease;
+  }
+
+  #servicos .service-card:hover .service-name{
+    color:#FFE39A !important;
+    -webkit-text-fill-color:#FFE39A !important;
+    transform:translateX(2px);
+  }
+
+  #servicos .service-card:hover .service-name::before{
+    width:54px;
+  }
+
+  #servicos .service-desc{
+    max-width:28ch;
+    margin-top:13px;
+    color:rgba(232,229,222,.62);
+    font-size:.91rem;
+    line-height:1.65;
+    transition:color .35s ease;
+  }
+
+  #servicos .service-card:hover .service-desc{
+    color:rgba(240,237,230,.78);
+  }
+
+  #servicos .service-card::before{
+    position:absolute;
+    left:30px;
+    right:30px;
+    bottom:0;
+    width:auto;
+    height:1px;
+    margin:0;
+    background:linear-gradient(
+      90deg,
+      rgba(212,167,44,.0),
+      rgba(212,167,44,.18),
+      rgba(212,167,44,.0)
+    );
+    transition:opacity .35s ease;
+  }
+
+  #servicos .service-card:hover::before{
+    width:auto;
+    background:linear-gradient(
+      90deg,
+      rgba(212,167,44,.0),
+      rgba(212,167,44,.42),
+      rgba(212,167,44,.0)
+    );
+  }
+
+  @media (max-width:980px){
+    #servicos .service-card{min-height:245px;}
+  }
+
+  @media (max-width:560px){
+    #servicos .service-card{
+      min-height:auto;
+      padding:30px 25px 28px;
+    }
+    #servicos .service-desc{max-width:36ch;}
+  }
+
+
+  /* ===== COMPARATIVO ANTES/DEPOIS — DESKTOP + MOBILE ===== */
+  #resultados .ba-wrap{
+    position:relative;
+    width:100%;
+    margin-top:clamp(42px,5vw,64px);
+    border:1px solid rgba(212,167,44,.20);
+    border-radius:12px;
+    overflow:hidden;
+    background:#08090A;
+    box-shadow:
+      0 30px 80px rgba(0,0,0,.48),
+      0 0 0 1px rgba(255,255,255,.025),
+      inset 0 1px 0 rgba(255,255,255,.04);
+    isolation:isolate;
+  }
+
+  #resultados .ba-compare{
+    position:relative;
+    width:100%;
+    height:clamp(500px,48vw,620px);
+    min-height:420px;
+    overflow:hidden;
+    cursor:ew-resize;
+    touch-action:none;
+    user-select:none;
+    -webkit-user-select:none;
+    background:#090A0B;
+  }
+
+  #resultados .ba-before,
+  #resultados .ba-after{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+  }
+
+  #resultados .ba-before img,
+  #resultados .ba-after img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  #resultados .ba-after{
+    clip-path:inset(0 0 0 50%);
+  }
+
+  #resultados .ba-compare::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:4;
+    pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.12),transparent 26%,transparent 72%,rgba(0,0,0,.30)),
+      radial-gradient(circle at 50% 50%,transparent 45%,rgba(0,0,0,.16) 100%);
+  }
+
+  #resultados .ba-tag{
+    position:absolute;
+    top:22px;
+    z-index:8;
+    padding:9px 13px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:4px;
+    background:rgba(8,9,10,.72);
+    color:#F3F0E8;
+    font-size:.68rem;
+    font-weight:700;
+    letter-spacing:.14em;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 8px 24px rgba(0,0,0,.28);
+  }
+
+  #resultados .ba-tag.before-tag{left:22px;}
+  #resultados .ba-tag.after-tag{
+    right:22px;
+    color:#171106;
+    border-color:rgba(255,224,142,.72);
+    background:linear-gradient(115deg,#9A6C12,#D5A52B 35%,#FFE39A 52%,#D5A52B 72%,#9A6C12);
+    box-shadow:0 8px 26px rgba(212,167,44,.22);
+  }
+
+  #resultados .ba-divider{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    z-index:9;
+    width:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(
+      180deg,
+      rgba(255,224,142,.72),
+      #D4A72C 25%,
+      #FFE08A 50%,
+      #D4A72C 75%,
+      rgba(255,224,142,.72)
+    );
+    box-shadow:
+      0 0 10px rgba(212,167,44,.38),
+      0 0 28px rgba(212,167,44,.16);
+    pointer-events:none;
+  }
+
+  #resultados .ba-handle{
+    position:absolute;
+    left:50%;
+    top:50%;
+    z-index:10;
+    width:58px;
+    height:58px;
+    transform:translate(-50%,-50%);
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(255,236,170,.80);
+    border-radius:50%;
+    background:linear-gradient(145deg,#8F6508,#D4A72C 42%,#FFE08A 58%,#A87918);
+    color:#171106;
+    box-shadow:
+      0 8px 24px rgba(0,0,0,.45),
+      0 0 0 6px rgba(212,167,44,.10),
+      0 0 28px rgba(212,167,44,.28),
+      inset 0 1px 0 rgba(255,255,255,.42);
+    pointer-events:none;
+  }
+
+  #resultados .ba-handle svg{
+    width:25px;
+    height:25px;
+    stroke:currentColor;
+    stroke-width:1.7;
+    fill:none;
+  }
+
+  #resultados .ba-hint{
+    position:absolute;
+    left:50%;
+    bottom:24px;
+    z-index:10;
+    transform:translateX(-50%);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 14px;
+    border:1px solid rgba(255,255,255,.13);
+    border-radius:999px;
+    background:rgba(8,9,10,.70);
+    color:rgba(246,243,235,.82);
+    font-size:.67rem;
+    font-weight:700;
+    letter-spacing:.13em;
+    white-space:nowrap;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+    transition:opacity .45s ease,transform .45s ease;
+    pointer-events:none;
+  }
+
+  #resultados .ba-hint::before,
+  #resultados .ba-hint::after{
+    content:"";
+    width:18px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#D4A72C);
+  }
+
+  #resultados .ba-hint::after{
+    background:linear-gradient(90deg,#D4A72C,transparent);
+  }
+
+  #resultados .ba-compare.is-active .ba-hint{
+    opacity:0;
+    transform:translate(-50%,8px);
+  }
+
+  #resultados .ba-compare:not(.is-active) .ba-handle{
+    animation:compareHandlePulse 2.6s ease-in-out infinite;
+  }
+
+  @keyframes compareHandlePulse{
+    0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 6px rgba(212,167,44,.08),0 0 24px rgba(212,167,44,.22),inset 0 1px 0 rgba(255,255,255,.42);}
+    50%{box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 10px rgba(212,167,44,.06),0 0 34px rgba(212,167,44,.34),inset 0 1px 0 rgba(255,255,255,.46);}
+  }
+
+  /* Ajustes para o layout original do comparativo. */
+  #resultados .ba-wrap .ba-compare + *{
+    position:relative;
+  }
+
+  @media (max-width:760px){
+    #resultados .ba-wrap{
+      margin-top:34px;
+      border-radius:9px;
+    }
+
+    #resultados .ba-compare{
+      height:min(118vw,520px);
+      min-height:360px;
+    }
+
+    #resultados .ba-tag{
+      top:14px;
+      padding:8px 10px;
+      font-size:.59rem;
+      letter-spacing:.11em;
+    }
+
+    #resultados .ba-tag.before-tag{left:14px;}
+    #resultados .ba-tag.after-tag{right:14px;}
+
+    #resultados .ba-handle{
+      width:54px;
+      height:54px;
+    }
+
+    #resultados .ba-hint{
+      bottom:16px;
+      padding:8px 12px;
+      font-size:.57rem;
+      letter-spacing:.10em;
+    }
+
+    #resultados .ba-hint::before,
+    #resultados .ba-hint::after{
+      width:12px;
+    }
+  }
+
+  @media (max-width:430px){
+    #resultados .ba-compare{
+      height:112vw;
+      min-height:330px;
+    }
+
+    #resultados .ba-handle{
+      width:52px;
+      height:52px;
+    }
+
+    #resultados .ba-hint{
+      max-width:calc(100% - 32px);
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    #resultados .ba-compare:not(.is-active) .ba-handle{
+      animation:none;
+    }
+  }
+
+</style>
+</head>
+<body>
+<!-- ======= NAV ======= -->
+<header class="site-nav" id="siteNav">
+<div class="wrap nav-inner">
+<a class="nav-logo" href="#top"><img alt="Garagem Estética Automotiva" src="assets/logo.png"/></a>
+<nav>
+<ul class="nav-links">
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#resultados">Resultados</a></li>
+<li><a href="#galeria">Galeria</a></li>
+<li><a href="#diferenciais">Diferenciais</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+</nav>
+<a class="btn-gold" href="#" id="navCta">Agendar pelo WhatsApp</a>
+<button aria-label="Abrir menu" class="menu-toggle" id="menuToggle"><span></span></button>
+</div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#servicos">Serviços</a>
+<a href="#resultados">Resultados</a>
+<a href="#galeria">Galeria</a>
+<a href="#diferenciais">Diferenciais</a>
+<a href="#contato">Contato</a>
+<a class="btn-gold" href="#" id="mobileCta">Agendar pelo WhatsApp</a>
+</div>
+<div id="top"></div>
+<!-- ======= HERO / PARALLAX ======= -->
+<div class="hero-pin">
+<div class="hero-stage">
+<div class="hero-layer" id="layer-bg">
+<video autoplay muted loop playsinline preload="auto" aria-hidden="true">
+<source src="assets/lavagem-carro.mp4" type="video/mp4"/>
+</video>
+</div>
+<div class="hero-layer" id="layer-glow">
+<div class="glow-a"></div>
+<div class="glow-b"></div>
+</div>
+<div class="hero-layer" id="layer-reflect"></div>
+<div class="hero-layer" id="layer-content">
+<div class="hero-brand-logo"><img alt="Garagem Estética Automotiva" src="assets/logo.png"/></div>
+<div class="hero-eyebrow">ESTÉTICA AUTOMOTIVA PREMIUM</div>
+<h1 class="h-display hero-title">Cuidado que se vê<br/>a <span class="gold-key">um metro</span> de distância.</h1>
+<p class="hero-sub">Detalhamento, polimento, vitrificação e higienização automotiva com padrão de acabamento que protege — e valoriza — o seu veículo.</p>
+<div class="hero-cta-row">
+<a class="btn-gold large wa-link" href="#">Agendar pelo WhatsApp</a>
+<a class="btn-outline" href="#servicos">Ver serviços</a>
+</div>
+</div>
+<div class="hero-scroll-cue"><span class="line"></span>ROLE PARA EXPLORAR</div>
+</div>
+</div>
+<!-- ======= SERVIÇOS ======= -->
+<section class="section-dark section-pad" id="servicos">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><path d="M12 2L21 7.5V16.5L12 22L3 16.5V7.5L12 2Z"></path></svg>NOSSOS SERVIÇOS</span>
+<h2 class="h-display section-title">Estética automotiva em cada <span class="gold-key">detalhe.</span></h2>
+<p class="section-text">Trabalhamos com técnicas especializadas para entregar resultado, proteção e acabamento em cada veículo.</p>
+</div>
+</div>
+<div class="wrap">
+<div class="services-grid">
+<div class="service-card" data-card="">
+<span class="service-num"><svg viewbox="0 0 24 24"><path d="M12 1.5L21.5 7V17L12 22.5L2.5 17V7L12 1.5Z"></path></svg>01</span>
+<h3 class="service-name h-display">Detalhamento automotivo</h3>
+<p class="service-desc">Limpeza completa e minuciosa, com foco em cada detalhe do seu veículo.</p>
+</div>
+<div class="service-card" data-card="">
+<span class="service-num"><svg viewbox="0 0 24 24"><path d="M12 1.5L21.5 7V17L12 22.5L2.5 17V7L12 1.5Z"></path></svg>02</span>
+<h3 class="service-name h-display">Polimento</h3>
+<p class="service-desc">Recupere o brilho original, reduza marcas e realce o acabamento da pintura.</p>
+</div>
+<div class="service-card" data-card="">
+<span class="service-num"><svg viewbox="0 0 24 24"><path d="M12 1.5L21.5 7V17L12 22.5L2.5 17V7L12 1.5Z"></path></svg>03</span>
+<h3 class="service-name h-display">Vitrificação</h3>
+<p class="service-desc">Proteção de longa duração contra riscos, sujeira e intempéries.</p>
+</div>
+<div class="service-card" data-card="">
+<span class="service-num"><svg viewbox="0 0 24 24"><path d="M12 1.5L21.5 7V17L12 22.5L2.5 17V7L12 1.5Z"></path></svg>04</span>
+<h3 class="service-name h-display">Higienização</h3>
+<p class="service-desc">Ambiente interno limpo, renovado e livre de impurezas.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="wrap"><div class="hex-divider"><span class="hd-line"></span><svg fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--gold)" viewbox="0 0 24 24"><path d="M12 2L21 7.5V16.5L12 22L3 16.5V7.5L12 2Z"></path></svg><span class="hd-line"></span></div></div>
+<!-- ======= RESULTADOS ======= -->
+<section class="section-dark section-pad" id="resultados">
+<div class="wrap">
+<div class="section-head reveal">
+<span class="eyebrow"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><path d="M12 2L21 7.5V16.5L12 22L3 16.5V7.5L12 2Z"></path></svg>RESULTADOS REAIS</span>
+<h2 class="h-display section-title">Resultado que você<br/><span class="gold-key">consegue ver.</span></h2>
+</div>
+<div class="ba-wrap reveal" id="baWrap">
+<img alt="Antes do detalhamento" class="ba-img ba-before" id="baBeforeImg" src="assets/galeria-mercedes.png">
+<img alt="Depois do detalhamento" class="ba-img ba-after" id="baAfterImg" src="assets/pendente-3.jpg"/>
+<span class="ba-tag before-tag">ANTES</span>
+<span class="ba-tag after-tag">DEPOIS</span>
+<div class="ba-handle" id="baHandle">
+<div class="ba-grip">
+<svg fill="none" stroke="#1a1300" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9 6L4 12L9 18"></path><path d="M15 6L20 12L15 18"></path></svg>
+</div>
+</div>
+</img></div>
+<div class="ba-caption reveal">
+<span>Arraste a linha para comparar o antes e depois</span>
+<span>Toyota SW4 — vitrificação + polimento</span>
+</div>
+</div>
+</section>
+<!-- ======= GALERIA ======= -->
+<div class="gallery-pin" id="galeria">
+<div class="gallery-stage">
+<div class="gallery-head">
+<span class="eyebrow"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><path d="M12 2L21 7.5V16.5L12 22L3 16.5V7.5L12 2Z"></path></svg>GARAGEM</span>
+<h2 class="h-display section-title" style="margin-top:16px;">Carros que já passaram<br/>pela <span class="gold-key">garagem.</span></h2>
+<p class="section-text">Diversos modelos, o mesmo cuidado em cada detalhe.</p>
+</div>
+<div class="gallery-track" id="galleryTrack">
+<div class="gallery-item">
+<img alt="Peugeot 208 detalhado" src="assets/galeria-suv.png"/>
+<div class="g-tag"><span class="g-model h-display">Peugeot 208</span><span class="g-idx">01</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Toyota SW4 detalhada" src="assets/pendente-5.jpg"/>
+<div class="g-tag"><span class="g-model h-display">Toyota SW4</span><span class="g-idx">02</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Dodge Dakota detalhada" src="assets/galeria-dodge-dakota.png"/>
+<div class="g-tag"><span class="g-model h-display">Dodge Dakota</span><span class="g-idx">03</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Jeep Renegade detalhado" src="assets/galeria-suv.png"/>
+<div class="g-tag"><span class="g-model h-display">Jeep Renegade</span><span class="g-idx">04</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Kia Cerato detalhado" src="assets/galeria-carro-vermelho.png"/>
+<div class="g-tag"><span class="g-model h-display">Kia Cerato</span><span class="g-idx">05</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ======= MOTOS QUE JÁ PASSARAM PELA GARAGEM ======= -->
+<div class="gallery-pin" id="galeria-motos">
+<div class="gallery-stage">
+<div class="gallery-head">
+<span class="eyebrow"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><path d="M5 17a3 3 0 100-6 3 3 0 000 6zM19 17a3 3 0 100-6 3 3 0 000 6zM8 17h6l2-7h3M8 10L6 6H3M13 10l2 4"></path></svg>MOTOS</span>
+<h2 class="h-display section-title" style="margin-top:16px;">Motos que já passaram<br/>pela <span class="gold-key">garagem.</span></h2>
+<p class="section-text">Cuidado e detalhamento para motos de todos os estilos, do uso diário às grandes viagens.</p>
+</div>
+<div class="gallery-track" id="motoGalleryTrack">
+<div class="gallery-item">
+<img alt="Honda CB 500F detalhada" src="assets/galeria-honda-cb500f.png"/>
+<div class="g-tag"><span class="g-model h-display">Honda Biz</span><span class="g-idx">01</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Ducati Diavel detalhada" src="assets/galeria-ducati-diavel.png"/>
+<div class="g-tag"><span class="g-model h-display">Ducati Diavel</span><span class="g-idx">02</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Honda XRE 300 detalhado" src="assets/galeria-honda-biz.png"/>
+<div class="g-tag"><span class="g-model h-display">Honda XRE 300</span><span class="g-idx">03</span></div>
+</div>
+<div class="gallery-item">
+<img alt="Triumph Tiger 800 detalhado" src="assets/galeria-honda-xre.png"/>
+<div class="g-tag"><span class="g-model h-display">Triumph Tiger 800</span><span class="g-idx">04</span></div>
+</div>
+<div class="gallery-item">
+<img alt="BMW G 310 GS detalhado" src="assets/galeria-moto-3.png"/>
+<div class="g-tag"><span class="g-model h-display">BMW G 310 GS</span><span class="g-idx">05</span></div>
+</div>
+
+</div>
+</div>
+</div>
+<!-- ======= DIFERENCIAL ======= -->
+<section class="diff-section" id="diferenciais">
+<div class="diff-bg"><img alt="" src="assets/carro-preto.png"/></div>
+<div class="wrap diff-inner">
+<span class="eyebrow reveal"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewbox="0 0 24 24"><path d="M12 2L21 7.5V16.5L12 22L3 16.5V7.5L12 2Z"></path></svg>O DIFERENCIAL</span>
+<h2 class="h-display diff-title reveal">Mais do que <span class="gold-key">estética.</span><br/>É valorização.</h2>
+<div class="diff-list">
+<div class="diff-item" data-diff="">
+<h4>Detalhamento</h4>
+<p>Atenção aos mínimos detalhes.</p>
+</div>
+<div class="diff-item" data-diff="">
+<h4>Acabamento</h4>
+<p>Resultado visual que impressiona.</p>
+</div>
+<div class="diff-item" data-diff="">
+<h4>Proteção</h4>
+<p>Tratamentos que preservam seu veículo.</p>
+</div>
+<div class="diff-item" data-diff="">
+<h4>Experiência</h4>
+<p>Seu carro em boas mãos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ======= CTA FINAL ======= -->
+<section class="cta-final" id="contato">
+<div class="cta-bg" id="ctaBg"><img alt="" src="assets/hero-ferrari.png"/></div>
+<div class="cta-inner">
+<span class="cta-eyebrow">PRONTO PARA VER SEU CARRO ASSIM?</span>
+<h2 class="h-display cta-title">Agende seu atendimento<br/>com a <span class="gold-key">Garagem Estética.</span></h2>
+<a class="btn-gold large wa-link" href="#">Agendar pelo WhatsApp</a>
+</div>
+</section>
+<!-- ======= FOOTER ======= -->
+<footer>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<div class="footer-logo"><img alt="Garagem Estética Automotiva" src="assets/logo.png"/></div>
+<p class="footer-tagline">Detalhamento automotivo de alto padrão em Cachoeiro de Itapemirim - ES.</p>
+</div>
+<div class="footer-col">
+<h5>CONTATO</h5>
+<a class="wa-link" href="#">WhatsApp: (27) 99697-3201</a>
+<a href="https://www.instagram.com/garagemesteticaes" rel="noopener" target="_blank">Instagram: @garagemesteticaes</a>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Cachoeiro+de+Itapemirim+ES" rel="noopener" target="_blank">Cachoeiro de Itapemirim - ES</a>
+</div>
+<div class="footer-col">
+<h5>HORÁRIO</h5>
+<p>Segunda a sábado</p>
+<p>08h às 18h</p>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span id="year"></span> Garagem Estética Automotiva. Todos os direitos reservados.</span>
+<span>Cachoeiro de Itapemirim - ES</span>
+</div>
+</div>
+</footer>
+<a aria-label="Falar no WhatsApp" class="wa-float wa-link" href="#">
+<svg fill="#08080a" viewbox="0 0 32 32"><path d="M16.001 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.257.593 4.372 1.63 6.204L3.2 28.8l6.78-1.78a12.74 12.74 0 006.02 1.53h.006c7.07 0 12.8-5.73 12.8-12.8s-5.736-12.55-12.805-12.55zm0 23.36a10.5 10.5 0 01-5.36-1.47l-.384-.228-4.02 1.056 1.073-3.92-.25-.402a10.52 10.52 0 01-1.618-5.596c0-5.826 4.738-10.564 10.565-10.564 5.825 0 10.563 4.738 10.563 10.564 0 5.827-4.738 10.56-10.569 10.56zm5.79-7.912c-.317-.159-1.874-.925-2.164-1.03-.29-.106-.502-.159-.714.159-.212.317-.82 1.03-1.005 1.242-.185.211-.37.238-.687.08-.317-.16-1.338-.494-2.548-1.574-.942-.84-1.578-1.878-1.763-2.195-.185-.318-.02-.49.139-.648.143-.142.317-.37.476-.556.16-.185.212-.317.317-.529.106-.212.053-.397-.026-.556-.08-.159-.714-1.72-.978-2.355-.257-.62-.518-.536-.714-.546-.185-.008-.397-.01-.608-.01-.212 0-.556.08-.847.397-.29.318-1.11 1.084-1.11 2.646 0 1.562 1.137 3.07 1.296 3.282.159.212 2.238 3.417 5.42 4.79.758.327 1.35.523 1.812.669.761.242 1.454.208 2.002.126.611-.091 1.874-.766 2.138-1.507.264-.74.264-1.375.185-1.507-.08-.132-.29-.211-.607-.37z"></path></svg>
+</a>
+<!-- ======= WHATSAPP APPOINTMENT MODAL ======= -->
+<div aria-hidden="true" class="wa-modal" id="waModal">
+<div aria-labelledby="waModalTitle" aria-modal="true" class="wa-modal-card" role="dialog">
+<button aria-label="Fechar" class="wa-modal-close" id="waModalClose">
+<svg fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+<div class="wa-modal-kicker">Agendamento</div>
+<h3 class="wa-modal-title" id="waModalTitle">Vamos preparar seu atendimento.</h3>
+<p class="wa-modal-sub">Preencha seus dados e escolha o tipo de veículo. Em seguida, abriremos o WhatsApp com a mensagem pronta.</p>
+<form id="waForm">
+<div class="wa-field">
+<label class="wa-label" for="waName">Seu nome</label>
+<input autocomplete="name" class="wa-input" id="waName" name="name" placeholder="Como podemos te chamar?" required="" type="text"/>
+</div>
+<div class="wa-field">
+<span class="wa-label">Tipo de veículo</span>
+<div class="vehicle-options">
+<div class="vehicle-option"><input id="vehicleCar" name="vehicle" required="" type="radio" value="Carro"/><label for="vehicleCar">🚗<br/>Carro</label></div>
+<div class="vehicle-option"><input id="vehicleMoto" name="vehicle" type="radio" value="Moto"/><label for="vehicleMoto">🏍️<br/>Moto</label></div>
+<div class="vehicle-option"><input id="vehicleOther" name="vehicle" type="radio" value="Outro"/><label for="vehicleOther">＋<br/>Outro</label></div>
+</div>
+<div class="other-wrap" id="otherWrap">
+<label class="wa-label" for="otherVehicle">Qual veículo?</label>
+<input class="wa-input" id="otherVehicle" name="otherVehicle" placeholder="Ex.: caminhonete, van, jet ski..." type="text"/>
+</div>
+<div aria-live="polite" class="wa-error" id="waError"></div>
+</div>
+<button class="btn-gold large wa-submit" type="submit">Continuar para o WhatsApp →</button>
+</form>
+</div>
+</div>
+<!-- ======= LIGHTBOX ======= -->
+<div class="lightbox" id="lightbox">
+<button aria-label="Fechar" class="lightbox-close" id="lightboxClose">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+<img alt="" id="lightboxImg" src=""/>
+</div>
+<script>
+  (function(){
+    var lightbox = document.getElementById("lightbox");
+    var lightboxImg = document.getElementById("lightboxImg");
+    var closeBtn = document.getElementById("lightboxClose");
+
+    function openLightbox(img){
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox(){
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+      lightboxImg.src = "";
+    }
+
+    document.querySelectorAll(".gallery-item img").forEach(function(img){
+      img.addEventListener("click", function(){ openLightbox(img); });
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", function(e){
+      if(e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape") closeLightbox();
+    });
+  })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  // -------- WhatsApp appointment modal --------
+  var WA_NUMBER = "5527996973201";
+  var waModal = document.getElementById("waModal");
+  var waForm = document.getElementById("waForm");
+  var waClose = document.getElementById("waModalClose");
+  var otherWrap = document.getElementById("otherWrap");
+  var otherVehicle = document.getElementById("otherVehicle");
+  var waError = document.getElementById("waError");
+
+  function openWaModal(e){
+    if(e) e.preventDefault();
+    waModal.classList.add("is-open");
+    waModal.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+    setTimeout(function(){ document.getElementById("waName").focus(); }, 180);
+  }
+  function closeWaModal(){
+    waModal.classList.remove("is-open");
+    waModal.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+  }
+  document.querySelectorAll(".wa-link, #navCta, #mobileCta").forEach(function(el){
+    el.setAttribute("href","#");
+    el.removeAttribute("target");
+    el.removeAttribute("rel");
+    el.addEventListener("click", openWaModal);
+  });
+  document.querySelectorAll('input[name="vehicle"]').forEach(function(radio){
+    radio.addEventListener("change", function(){
+      var isOther = this.value === "Outro";
+      otherWrap.classList.toggle("is-visible", isOther);
+      otherVehicle.required = isOther;
+      if(!isOther) otherVehicle.value = "";
+      waError.textContent = "";
+    });
+  });
+  waClose.addEventListener("click", closeWaModal);
+  waModal.addEventListener("click", function(e){ if(e.target === waModal) closeWaModal(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && waModal.classList.contains("is-open")) closeWaModal(); });
+  waForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    waError.textContent = "";
+    var name = document.getElementById("waName").value.trim();
+    var selected = document.querySelector('input[name="vehicle"]:checked');
+    if(!name || !selected){ waError.textContent = "Preencha seu nome e escolha o tipo de veículo."; return; }
+    var vehicle = selected.value;
+    if(vehicle === "Outro") {
+      var detail = otherVehicle.value.trim();
+      if(!detail){ waError.textContent = "Informe qual é o outro tipo de veículo."; otherVehicle.focus(); return; }
+      vehicle = "Outro veículo: " + detail;
+    }
+    var message = "Olá! Meu nome é " + name + ". Gostaria de agendar um atendimento na Garagem Estética Automotiva para meu veículo: " + vehicle + ".";
+    var waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+    window.open(waUrl,"_blank","noopener");
+    closeWaModal();
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // -------- Nav scroll state --------
+  var nav = document.getElementById("siteNav");
+  function onScrollNav(){
+    if(window.scrollY > 40){ nav.classList.add("scrolled"); }
+    else { nav.classList.remove("scrolled"); }
+  }
+  window.addEventListener("scroll", onScrollNav, {passive:true});
+  onScrollNav();
+
+  // -------- Mobile menu --------
+  var toggle = document.getElementById("menuToggle");
+  var mobileMenu = document.getElementById("mobileMenu");
+  toggle.addEventListener("click", function(){
+    toggle.classList.toggle("open");
+    mobileMenu.classList.toggle("open");
+    document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "";
+  });
+  mobileMenu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+      toggle.classList.remove("open");
+      mobileMenu.classList.remove("open");
+      document.body.style.overflow = "";
+    });
+  });
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    var isMobile = window.innerWidth < 860;
+
+    if(!reduceMotion){
+      // ---------- HERO PARALLAX TIMELINE ----------
+      var heroTl = gsap.timeline({
+        scrollTrigger:{
+          trigger:".hero-pin",
+          start:"top top",
+          end:"bottom bottom",
+          scrub:0.6
+        }
+      });
+
+      heroTl
+        .to("#layer-bg video", {yPercent: isMobile ? 8 : 14, scale:1.27, ease:"none"}, 0)
+        .to("#layer-glow", {yPercent: isMobile ? 12 : 22, ease:"none"}, 0)
+        .to("#layer-reflect", {yPercent: isMobile ? -20 : -40, xPercent: 6, ease:"none"}, 0)
+        .to("#layer-content", {yPercent: -18, opacity:0, ease:"none"}, 0.05)
+        .to(".hero-scroll-cue", {opacity:0, ease:"none"}, 0);
+
+      // ---------- SERVICE CARDS STAGGER ----------
+      gsap.to("[data-card]", {
+        opacity:1, y:0, duration:0.8, ease:"power3.out", stagger:0.12,
+        scrollTrigger:{ trigger:".services-grid", start:"top 82%" }
+      });
+
+      // ---------- GENERIC REVEALS ----------
+      gsap.utils.toArray(".reveal").forEach(function(el){
+        gsap.to(el, {
+          opacity:1, y:0, duration:0.9, ease:"power3.out",
+          scrollTrigger:{ trigger:el, start:"top 88%" }
+        });
+      });
+
+      // ---------- DIFERENCIAL ITEMS ----------
+      gsap.to("[data-diff]", {
+        opacity:1, y:0, duration:0.8, ease:"power3.out", stagger:0.15,
+        scrollTrigger:{ trigger:".diff-list", start:"top 85%" }
+      });
+
+      // ---------- DIFERENCIAL BG PARALLAX ----------
+      gsap.to(".diff-bg img", {
+        yPercent:14, ease:"none",
+        scrollTrigger:{ trigger:".diff-section", start:"top bottom", end:"bottom top", scrub:true }
+      });
+
+      // ---------- CTA PARALLAX ----------
+      gsap.to("#ctaBg img", {
+        yPercent:-10, ease:"none",
+        scrollTrigger:{ trigger:".cta-final", start:"top bottom", end:"bottom top", scrub:true }
+      });
+
+      // ---------- HORIZONTAL GALLERY (desktop only — mobile scrolls natively) ----------
+      if(!isMobile){
+        document.querySelectorAll(".gallery-pin").forEach(function(pin){
+          var track = pin.querySelector(".gallery-track");
+          if(!track) return;
+          function getScrollDistance(){
+            return Math.max(track.scrollWidth - window.innerWidth + 90, 0);
+          }
+          gsap.to(track, {
+            x: function(){ return -getScrollDistance(); },
+            ease:"none",
+            scrollTrigger:{
+              trigger: pin,
+              start:"top top",
+              end:"bottom bottom",
+              scrub:0.6,
+              invalidateOnRefresh:true
+            }
+          });
+        });
+      }
+
+    } else {
+      // Reduced motion: simple fade-ins, no transforms
+      gsap.set(["[data-card]","[data-diff]",".reveal"], {opacity:1, y:0});
+    }
+  } else {
+    // GSAP failed to load: ensure content is still visible
+    document.querySelectorAll("[data-card],[data-diff],.reveal").forEach(function(el){
+      el.style.opacity = 1; el.style.transform = "none";
+    });
+  }
+
+  // -------- SUBTLE TILT ON SERVICE CARDS (signature micro-interaction) --------
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if(canHover && !reduceMotion){
+    document.querySelectorAll(".service-card").forEach(function(card){
+      var rX = 0, rY = 0;
+      function onMove(e){
+        var rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        rY = px * 8;
+        rX = py * -8;
+        card.style.transform = "translateY(0) perspective(700px) rotateX(" + rX + "deg) rotateY(" + rY + "deg)";
+      }
+      function onLeave(){
+        card.style.transform = "translateY(0) perspective(700px) rotateX(0deg) rotateY(0deg)";
+      }
+      card.addEventListener("mousemove", onMove);
+      card.addEventListener("mouseleave", onLeave);
+    });
+  }
+
+  // -------- BEFORE / AFTER SLIDER --------
+  var baWrap = document.getElementById("baWrap");
+  var baAfter = document.getElementById("baAfterImg");
+  var baHandle = document.getElementById("baHandle");
+  var dragging = false;
+
+  function setBaPosition(clientX){
+    var rect = baWrap.getBoundingClientRect();
+    var pct = ((clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(2, Math.min(98, pct));
+    baAfter.style.clipPath = "inset(0 " + (100 - pct) + "% 0 0)";
+    baHandle.style.left = pct + "%";
+  }
+
+  function startDrag(e){
+    dragging = true;
+    baWrap.style.cursor = "ew-resize";
+  }
+  function endDrag(){ dragging = false; }
+  function moveDrag(e){
+    if(!dragging) return;
+    var x = e.touches ? e.touches[0].clientX : e.clientX;
+    setBaPosition(x);
+  }
+
+  baWrap.addEventListener("mousedown", function(e){ startDrag(e); setBaPosition(e.clientX); });
+  window.addEventListener("mouseup", endDrag);
+  window.addEventListener("mousemove", moveDrag);
+
+  baWrap.addEventListener("touchstart", function(e){ startDrag(e); setBaPosition(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener("touchend", endDrag);
+  window.addEventListener("touchmove", moveDrag, {passive:true});
+
+  baWrap.addEventListener("click", function(e){ setBaPosition(e.clientX); });
+
+})();
+</script>
+
+<script>
+(() => {
+  const compare = document.querySelector('#resultados .ba-compare');
+  const after = compare?.querySelector('.ba-after');
+  const divider = compare?.querySelector('.ba-divider');
+  const handle = compare?.querySelector('.ba-handle');
+
+  if (!compare || !after || !divider || !handle) return;
+
+  let dragging = false;
+
+  const setPosition = (clientX) => {
+    const rect = compare.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+    after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    divider.style.left = `${pct}%`;
+    handle.style.left = `${pct}%`;
+  };
+
+  const begin = () => {
+    dragging = true;
+    compare.classList.add('is-active');
+  };
+
+  const finish = () => {
+    dragging = false;
+  };
+
+  compare.addEventListener('pointerdown', (event) => {
+    begin();
+    compare.setPointerCapture?.(event.pointerId);
+    setPosition(event.clientX);
+  });
+
+  compare.addEventListener('pointermove', (event) => {
+    if (dragging) setPosition(event.clientX);
+  });
+
+  compare.addEventListener('pointerup', finish);
+  compare.addEventListener('pointercancel', finish);
+  compare.addEventListener('pointerleave', () => {
+    if (dragging) finish();
+  });
+
+  compare.addEventListener('keydown', (event) => {
+    if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+    event.preventDefault();
+
+    const current = parseFloat(divider.style.left || '50');
+    let next = current;
+
+    if (event.key === 'ArrowLeft') next = current - 5;
+    if (event.key === 'ArrowRight') next = current + 5;
+    if (event.key === 'Home') next = 0;
+    if (event.key === 'End') next = 100;
+
+    const rect = compare.getBoundingClientRect();
+    setPosition(rect.left + rect.width * (next / 100));
+    compare.classList.add('is-active');
+  });
+
+  // Mostra a dica no primeiro contato e deixa o usuário perceber a interação.
+  setTimeout(() => compare.classList.add('is-active'), 6500);
+})();
+</script>
+
+</body>
+</html>
