@@ -1467,3 +1467,101 @@ footer p:has(a[href*="99697"]),
 #resultados .ba-wrap-secondary{margin-top:clamp(54px,7vw,88px);}
 #resultados .ba-wrap-secondary .ba-caption{margin-top:18px;}
 @media(max-width:760px){#resultados .ba-wrap-secondary{margin-top:46px;}}
+
+/* ===== MOBILE PERFORMANCE V1 ===== */
+@media (max-width:860px){
+
+  /*
+    Evita manter camadas enormes permanentemente promovidas
+    para a GPU enquanto o usuario percorre a pagina.
+  */
+  .hero-layer,
+  .gallery-track,
+  #layer-bg video,
+  #layer-glow,
+  #layer-reflect,
+  #layer-content,
+  .diff-bg img,
+  .cta-bg img,
+  .cta-bg-video{
+    will-change:auto !important;
+  }
+
+  /*
+    No celular o hero continua visualmente em camadas,
+    mas sem composicao/blend pesada.
+  */
+  #layer-glow{
+    mix-blend-mode:normal !important;
+  }
+
+  #layer-reflect{
+    mix-blend-mode:normal !important;
+  }
+
+  /*
+    Blur de 70px em elementos grandes e caro em GPU mobile.
+    Mantemos o efeito, mas muito mais leve.
+  */
+  #layer-glow .glow-a,
+  #layer-glow .glow-b{
+    filter:blur(32px) !important;
+  }
+
+  /*
+    Tags/comparadores: reduz filtros de fundo caros.
+  */
+  #resultados .ba-tag,
+  #resultados .ba-hint{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+
+  /*
+    No menu e botoes, evita filtros caros durante scroll.
+  */
+  .mobile-menu,
+  #navCta,
+  #mobileCta,
+  .hero-cta-row .wa-link,
+  .cta-final .wa-link,
+  .wa-submit{
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+
+  /*
+    Isola secoes longas fora da viewport.
+    O navegador pode adiar pintura/renderizacao.
+  */
+  #servicos,
+  #resultados,
+  #galeria,
+  #diferenciais,
+  #contato,
+  footer{
+    content-visibility:auto;
+    contain-intrinsic-size:800px;
+  }
+
+  /*
+    A galeria mobile ja usa scroll horizontal nativo.
+    Remove transform hints residuais.
+  */
+  .gallery-track{
+    transform:none !important;
+  }
+}
+
+@media (max-width:600px){
+
+  /*
+    Em aparelhos menores reduzimos ainda mais o blur,
+    sem retirar completamente a atmosfera do hero.
+  */
+  #layer-glow .glow-a,
+  #layer-glow .glow-b{
+    filter:blur(22px) !important;
+    opacity:.55 !important;
+  }
+}

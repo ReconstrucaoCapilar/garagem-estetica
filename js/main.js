@@ -93,21 +93,25 @@
 
     if(!reduceMotion){
       // ---------- HERO PARALLAX TIMELINE ----------
-      var heroTl = gsap.timeline({
-        scrollTrigger:{
-          trigger:".hero-pin",
-          start:"top top",
-          end:"bottom bottom",
-          scrub:0.6
-        }
-      });
+      // Desktop mantem o efeito completo.
+      // Mobile evita ScrollTrigger continuo em varias camadas grandes.
+      if(!isMobile){
+        var heroTl = gsap.timeline({
+          scrollTrigger:{
+            trigger:".hero-pin",
+            start:"top top",
+            end:"bottom bottom",
+            scrub:0.6
+          }
+        });
 
-      heroTl
-        .to("#layer-bg video", {yPercent: isMobile ? 8 : 14, scale:1.27, ease:"none"}, 0)
-        .to("#layer-glow", {yPercent: isMobile ? 12 : 22, ease:"none"}, 0)
-        .to("#layer-reflect", {yPercent: isMobile ? -20 : -40, xPercent: 6, ease:"none"}, 0)
-        .to("#layer-content", {yPercent: -18, opacity:0, ease:"none"}, 0.05)
-        .to(".hero-scroll-cue", {opacity:0, ease:"none"}, 0);
+        heroTl
+          .to("#layer-bg video", {yPercent:14, scale:1.27, ease:"none"}, 0)
+          .to("#layer-glow", {yPercent:22, ease:"none"}, 0)
+          .to("#layer-reflect", {yPercent:-40, xPercent:6, ease:"none"}, 0)
+          .to("#layer-content", {yPercent:-18, opacity:0, ease:"none"}, 0.05)
+          .to(".hero-scroll-cue", {opacity:0, ease:"none"}, 0);
+      }
 
       // ---------- SERVICE CARDS STAGGER ----------
       gsap.to("[data-card]", {
