@@ -2309,6 +2309,13 @@ footer p:has(a[href*="99697"]),
 }
 </style>
 
+
+<style id="dakota-comparison-addon">
+/* Segundo comparativo: reutiliza o visual existente sem adicionar bibliotecas. */
+#resultados .ba-wrap-secondary{margin-top:clamp(54px,7vw,88px);}
+#resultados .ba-wrap-secondary .ba-caption{margin-top:18px;}
+@media(max-width:760px){#resultados .ba-wrap-secondary{margin-top:46px;}}
+</style>
 </head>
 <body>
 <!-- ======= NAV ======= -->
@@ -2419,6 +2426,23 @@ footer p:has(a[href*="99697"]),
 <div class="ba-caption reveal">
 <span>Arraste a linha para comparar o antes e depois</span>
 <span>Toyota SW4 — vitrificação + polimento</span>
+</div>
+
+<!-- Dodge Dakota — comparativo idêntico ao da SW4 -->
+<div class="ba-wrap reveal ba-wrap-secondary" id="baWrapDakota">
+<img alt="Dodge Dakota antes do detalhamento" class="ba-img ba-before" id="baBeforeDakota" src="assets/dakota-antes.jpg" loading="lazy" decoding="async">
+<img alt="Dodge Dakota depois do detalhamento" class="ba-img ba-after" id="baAfterDakota" src="assets/dakota-depois.jpg" loading="lazy" decoding="async"/>
+<span class="ba-tag before-tag">ANTES</span>
+<span class="ba-tag after-tag">DEPOIS</span>
+<div class="ba-handle" id="baHandleDakota">
+<div class="ba-grip">
+<svg fill="none" stroke="#1a1300" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24"><path d="M9 6L4 12L9 18"></path><path d="M15 6L20 12L15 18"></path></svg>
+</div>
+</div>
+</div>
+<div class="ba-caption reveal">
+<span>Arraste a linha para comparar o antes e depois</span>
+<span>Dodge Dakota — detalhamento automotivo</span>
 </div>
 </div>
 </section>
@@ -2925,5 +2949,45 @@ footer p:has(a[href*="99697"]),
 })();
 </script>
 
+
+<script id="dakota-comparison-script">
+(() => {
+  // Mesma lógica de arraste usada no comparativo da SW4.
+  var baWrap = document.getElementById("baWrapDakota");
+  var baAfter = document.getElementById("baAfterDakota");
+  var baHandle = document.getElementById("baHandleDakota");
+  if (!baWrap || !baAfter || !baHandle) return;
+  var dragging = false;
+
+  function setBaPosition(clientX){
+    var rect = baWrap.getBoundingClientRect();
+    var pct = ((clientX - rect.left) / rect.width) * 100;
+    pct = Math.max(2, Math.min(98, pct));
+    baAfter.style.clipPath = "inset(0 " + (100 - pct) + "% 0 0)";
+    baHandle.style.left = pct + "%";
+  }
+
+  function startDrag(){
+    dragging = true;
+    baWrap.style.cursor = "ew-resize";
+  }
+  function endDrag(){ dragging = false; }
+  function moveDrag(e){
+    if(!dragging) return;
+    var x = e.touches ? e.touches[0].clientX : e.clientX;
+    setBaPosition(x);
+  }
+
+  baWrap.addEventListener("mousedown", function(e){ startDrag(); setBaPosition(e.clientX); });
+  window.addEventListener("mouseup", endDrag);
+  window.addEventListener("mousemove", moveDrag);
+
+  baWrap.addEventListener("touchstart", function(e){ startDrag(); setBaPosition(e.touches[0].clientX); }, {passive:true});
+  window.addEventListener("touchend", endDrag);
+  window.addEventListener("touchmove", moveDrag, {passive:true});
+
+  baWrap.addEventListener("click", function(e){ setBaPosition(e.clientX); });
+})();
+</script>
 </body>
 </html>
