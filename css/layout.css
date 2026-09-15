@@ -1,0 +1,29 @@
+/* ============ SECTION SHELLS ============ */
+  section{position:relative;}
+  .section-pad{padding:clamp(65px,9vw,110px) 0;}
+  .section-dark{background:var(--void);}
+  .section-panel{background:var(--panel);}
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  }
+
+  .section-head{
+    max-width:640px;
+    margin-bottom:clamp(48px,7vw,84px);
+  }
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+  .section-title{
+    margin-top:18px;
+    font-size:clamp(1.9rem, 4vw, 3.1rem);
+    color:var(--ink);
+  }
+  .section-text{
+    margin-top:20px;
+    color:var(--ink-dim);
+    font-size:1.02rem;
+    max-width:52ch;
+  }
+  .section-head.center .section-text{margin-left:auto; margin-right:auto;}
+
+  

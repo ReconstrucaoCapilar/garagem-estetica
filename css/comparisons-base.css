@@ -1,0 +1,56 @@
+/* ============ RESULTADOS / BEFORE-AFTER ============ */
+  .ba-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    max-height:640px;
+    border:1px solid var(--line-strong);
+    overflow:hidden;
+    cursor:ew-resize;
+    user-select:none;
+    background:#050506;
+  }
+  .ba-img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover;
+  }
+  .ba-before{z-index:1;}
+  .ba-after{z-index:2; clip-path:inset(0 50% 0 0);}
+  .ba-tag{
+    position:absolute; top:20px;
+    font-size:.72rem; font-weight:600; letter-spacing:.12em;
+    padding:7px 14px;
+    background:rgba(8,8,10,.65);
+    backdrop-filter:blur(6px);
+    z-index:3;
+    border:1px solid var(--line-strong);
+  }
+  .ba-tag.before-tag{left:20px;}
+  .ba-tag.after-tag{right:20px; color:var(--gold); border-color:rgba(226,177,60,.4);}
+  .ba-handle{
+    position:absolute; top:0; bottom:0;
+    left:50%;
+    width:2px;
+    background:var(--gold);
+    z-index:4;
+    transform:translateX(-1px);
+    box-shadow:0 0 24px rgba(226,177,60,.6);
+  }
+  .ba-grip{
+    position:absolute; top:50%; left:50%;
+    width:46px; height:46px;
+    transform:translate(-50%,-50%);
+    background:var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.45);
+  }
+  .ba-grip svg{width:20px; height:20px;}
+  .ba-caption{
+    margin-top:20px;
+    display:flex; justify-content:space-between; gap:20px;
+    color:var(--ink-faint); font-size:.82rem;
+    flex-wrap:wrap;
+  }
+
+  
